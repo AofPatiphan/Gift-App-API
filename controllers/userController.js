@@ -53,6 +53,7 @@ exports.getAllUser = async (req, res, next) => {
                 )
             );
         });
+        // console.log(JSON.parse(JSON.stringify(sortedUser)));
         res.status(200).json({ sortedUser });
     } catch (err) {
         next(err);
