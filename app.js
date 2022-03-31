@@ -32,7 +32,7 @@ app.use(
 );
 
 app.use('/auth', authRoute);
-app.use('/users', userRoute);
+app.use('/user', userRoute);
 app.use('/about', aboutRoute);
 app.use('/upload', uploadRoute);
 app.use('/post', postRoute);
