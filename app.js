@@ -32,7 +32,7 @@ app.use(
 );
 
 app.use('/auth', authRoute);
-app.use('/user', userRoute);
+app.use('/users', userRoute);
 app.use('/about', aboutRoute);
 app.use('/upload', uploadRoute);
 app.use('/post', postRoute);
@@ -162,5 +162,5 @@ io.on('connection', (socket) => {
 });
 
 server.listen(process.env.PORT || 8000, () =>
-    console.log('server run on port 5555')
+    console.log('server run on port 8888')
 );

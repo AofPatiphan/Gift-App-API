@@ -17,18 +17,19 @@ exports.getAllUser = async (req, res, next) => {
             where: { [Op.not]: [{ id: [id] }] },
         });
 
-        const myData = await User.findOne({
-            include: [
-                {
-                    model: About,
-                    attributes: {
-                        exclude: ['createdAt'],
-                    },
-                },
-            ],
-            where: { id },
-        });
+        // const myData = await User.findOne({
+        //     include: [
+        //         {
+        //             model: About,
+        //             attributes: {
+        //                 exclude: ['createdAt'],
+        //             },
+        //         },
+        //     ],
+        //     where: { id },
+        // });
 
+<<<<<<< HEAD
         const sortedUser = users.sort((a, b) => {
             return (
                 getPreciseDistance(
@@ -55,6 +56,33 @@ exports.getAllUser = async (req, res, next) => {
         });
         // console.log(JSON.parse(JSON.stringify(sortedUser)));
         res.status(200).json({ sortedUser });
+=======
+        // const sortedUser = users.sort((a, b) => {
+        //     return (
+        //         getPreciseDistance(
+        //             {
+        //                 latitude: myData.About.latitude,
+        //                 longitude: myData.About.longitude,
+        //             },
+        //             {
+        //                 latitude: a.About.latitude,
+        //                 longitude: a.About.longitude,
+        //             }
+        //         ) -
+        //         getPreciseDistance(
+        //             {
+        //                 latitude: myData.About.latitude,
+        //                 longitude: myData.About.longitude,
+        //             },
+        //             {
+        //                 latitude: b.About.latitude,
+        //                 longitude: b.About.longitude,
+        //             }
+        //         )
+        //     );
+        // });
+        res.status(200).json({ users });
+>>>>>>> f5a2c4bc9e71d662aae4c970d00740d3322bb755
     } catch (err) {
         next(err);
     }
