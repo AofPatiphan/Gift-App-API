@@ -17,43 +17,43 @@ exports.getAllUser = async (req, res, next) => {
             where: { [Op.not]: [{ id: [id] }] },
         });
 
-        const myData = await User.findOne({
-            include: [
-                {
-                    model: About,
-                    attributes: {
-                        exclude: ['createdAt'],
-                    },
-                },
-            ],
-            where: { id },
-        });
+        // const myData = await User.findOne({
+        //     include: [
+        //         {
+        //             model: About,
+        //             attributes: {
+        //                 exclude: ['createdAt'],
+        //             },
+        //         },
+        //     ],
+        //     where: { id },
+        // });
 
-        const sortedUser = users.sort((a, b) => {
-            return (
-                getPreciseDistance(
-                    {
-                        latitude: myData.About.latitude,
-                        longitude: myData.About.longitude,
-                    },
-                    {
-                        latitude: a.About.latitude,
-                        longitude: a.About.longitude,
-                    }
-                ) -
-                getPreciseDistance(
-                    {
-                        latitude: myData.About.latitude,
-                        longitude: myData.About.longitude,
-                    },
-                    {
-                        latitude: b.About.latitude,
-                        longitude: b.About.longitude,
-                    }
-                )
-            );
-        });
-        res.status(200).json({ sortedUser });
+        // const sortedUser = users.sort((a, b) => {
+        //     return (
+        //         getPreciseDistance(
+        //             {
+        //                 latitude: myData.About.latitude,
+        //                 longitude: myData.About.longitude,
+        //             },
+        //             {
+        //                 latitude: a.About.latitude,
+        //                 longitude: a.About.longitude,
+        //             }
+        //         ) -
+        //         getPreciseDistance(
+        //             {
+        //                 latitude: myData.About.latitude,
+        //                 longitude: myData.About.longitude,
+        //             },
+        //             {
+        //                 latitude: b.About.latitude,
+        //                 longitude: b.About.longitude,
+        //             }
+        //         )
+        //     );
+        // });
+        res.status(200).json({ users });
     } catch (err) {
         next(err);
     }
